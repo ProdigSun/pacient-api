@@ -1,0 +1,23 @@
+{
+  "name": "pacient-api",
+  "version": "1.0.0",
+  "description": "Pacient API for mc855",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaPili1/pacient-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaPili1/pacient-api/issues"
+  },
+  "homepage": "https://github.com/RafaPili1/pacient-api#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "google-spreadsheet": "^3.3.0"
+  }
+}
