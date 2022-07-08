@@ -50,18 +50,9 @@ async function app() {
   function buildResponse(row) {
     return {
       timestamp: row["Carimbo de data/hora"],
-      responsible_name: row["Nome completo do responsável"],
-      pacient_name: row["Nome completo do paciente"],
-      pacient_birthdate: row["Data de nascimento do paciente"],
-      pacient_cns: row["Número do CNS do paciente"],
-      pacient_undergoing_threatment: row["Está fazendo tratamento com algum remédio"],
-      pacient_undergoing_medicine: row["Qual remédio?"],
-      has_chronic_disease: row["Possui doença crônica"],
-      chronic_disease: row["Qual doença?"],
-      pacient_problem: row["Descreva brevemente o que o paciente está passando"],
-      speciality_required: row["Especialidade requerida"],
-      has_schedule: row["Possui agendamento"],
-      schedule_date: row["Horário do agendamento"]
+      hasHc: row["Você já é paciente do HC?"],
+      whyIsHere: row["O que veio fazer no HC?"],
+      typeOfConsult: row["A sua consulta foi agendada, é um encaixe ou nenhum dos dois?"]
     };
   }
 }
