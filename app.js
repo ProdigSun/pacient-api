@@ -28,6 +28,9 @@ client.connect(function (err, db) {
 
 async function app() {
   var app = express();
+  const checkIfAuthenticated = expressJwt({
+    secret: RSA_PUBLIC_KEY,
+  });
 
   //Here we are configuring express to use body-parser as middle-ware.
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -83,10 +86,6 @@ async function app() {
 
   app.listen(process.env.PORT || 3000, function () {
     console.log("server listening on port 3000!");
-  });
-
-  const checkIfAuthenticated = expressJwt({
-    secret: RSA_PUBLIC_KEY,
   });
 
   function loginRoute(req, res) {
