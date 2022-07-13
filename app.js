@@ -59,7 +59,7 @@ async function app() {
     res.send('Healthy');
   });
 
-  app.get('/patients', async function (req, res) {
+  app.route('/patients').get(checkIfAuthenticated, async function (req, res) {
     dbConnection.collection("patient")
       .find({}).limit(50)
       .toArray((err, result) => {
@@ -70,6 +70,11 @@ async function app() {
   app.listen((process.env.PORT || 3000), function () {
     console.log('server listening on port 3000!');
   });
+
+  const checkIfAuthenticated = expressJwt({
+    secret: RSA_PUBLIC_KEY
+}); 
+
 }
 
 function loginRoute(req, res) {
