@@ -29,7 +29,7 @@ async function app() {
   //Here we are configuring express to use body-parser as middle-ware.
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.route('/api/login')
+  app.route('/login')
   .post(loginRoute);
 
   app.post('/patient', async function (req, res) {
