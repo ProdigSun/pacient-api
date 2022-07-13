@@ -103,7 +103,7 @@ async function app() {
       .limit(1)
       .toArray((err, result) => {
         console.log(result);
-        if (result == []) {
+        if (result === []) {
           res
           .status(401)
           .send()
