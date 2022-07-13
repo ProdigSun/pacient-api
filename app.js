@@ -37,9 +37,10 @@ async function app() {
   })
 
   app.post('/patient/update', async function (req, res) {
+    console.log(req.body.id)
     dbConnection.collection("patient")
       .updateOne({
-        _id: req.body.id
+        id: req.body.id
       }, {
           $set: {
             status: req.body.status
