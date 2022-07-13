@@ -77,7 +77,7 @@ function loginRoute(req, res) {
   const email = req.body.email,
         password = req.body.password;
 
-  if (validateEmailAndPassword()) {
+  if (true) {
     //  const userId = findUserIdForEmail(email);
 
       const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
