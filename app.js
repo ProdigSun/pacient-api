@@ -10,10 +10,18 @@ const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
 var jwt = require("jsonwebtoken");
 var fs = require("fs");
+const expressJwt = require('express-jwt');
+
 
 var express = require("express");
 
 const RSA_PRIVATE_KEY = fs.readFileSync("./demos/mykey.pem");
+const RSA_PUBLIC_KEY = fs.readFileSync('./demos/pubkey.pem');
+
+const checkIfAuthenticated = expressJwt({
+  secret: RSA_PUBLIC_KEY
+}); 
+
 
 let dbConnection;
 
@@ -28,9 +36,6 @@ client.connect(function (err, db) {
 
 async function app() {
   var app = express();
-  const checkIfAuthenticated = expressJwt({
-    secret: RSA_PUBLIC_KEY,
-  });
 
   //Here we are configuring express to use body-parser as middle-ware.
   app.use(bodyParser.urlencoded({ extended: false }));
