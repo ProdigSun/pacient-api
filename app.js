@@ -101,7 +101,8 @@ async function app() {
       .collection("user")
       .find({ email: email, password: password })
       .limit(1)
-      .toArray((err, result) => {
+      .toArray((result) => {
+        console.log(result);
         if (!result) {
           res
           .status(401)
