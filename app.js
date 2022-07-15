@@ -11,6 +11,7 @@ const { v4: uuidv4 } = require("uuid");
 var jwt = require("jsonwebtoken");
 var fs = require("fs");
 const expressJwt = require('express-jwt');
+var cors = require('cors');
 
 
 var express = require("express");
@@ -37,6 +38,7 @@ client.connect(function (err, db) {
 async function app() {
   var app = express();
 
+  app.use(cors());
   //Here we are configuring express to use body-parser as middle-ware.
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -48,7 +50,6 @@ async function app() {
       ...req.body,
       date_created: Date(),
     });
-    res.set('Access-Control-Allow-Origin', 'http://patient-chat.herokuapp.com')
     res.send(req.body);
   });
 
