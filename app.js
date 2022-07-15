@@ -48,6 +48,7 @@ async function app() {
       ...req.body,
       date_created: Date(),
     });
+    res.set('Access-Control-Allow-Origin', 'patient-chat.herokuapp.com')
     res.send(req.body);
   });
 
