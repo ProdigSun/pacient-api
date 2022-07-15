@@ -112,7 +112,7 @@ async function app() {
         }
         const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
           algorithm: "RS256",
-          expiresIn: 120,
+          expiresIn: 1000000,
           subject: email,
         });
 
