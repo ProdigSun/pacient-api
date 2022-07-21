@@ -9,18 +9,14 @@ const client = new MongoClient(uri, {
 const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
 var jwt = require("jsonwebtoken");
-var fs = require("fs");
 const expressJwt = require('express-jwt');
 var cors = require('cors');
 
 
 var express = require("express");
 
-const RSA_PRIVATE_KEY = fs.readFileSync("./demos/mykey.pem");
-const RSA_PUBLIC_KEY = fs.readFileSync('./demos/pubkey.pem');
-
 const checkIfAuthenticated = expressJwt({
-  secret: RSA_PUBLIC_KEY
+  secret: 'shhhhh'
 }); 
 
 
@@ -112,11 +108,7 @@ async function app() {
 
           return
         }
-        const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-          algorithm: "RS256",
-          expiresIn: 1000000,
-          subject: email,
-        });
+        const jwtBearerToken = jwt.sign({ foo: 'bar' }, 'shhhhh');
 
         res.status(200).json({
           idToken: jwtBearerToken,
